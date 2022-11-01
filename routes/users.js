@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var monk = require('monk');
-var db = monk('localhost:27017/medicare');
+var db = monk(process.env.MONGO_URI);
 
 var collection = db.get('users');
 
