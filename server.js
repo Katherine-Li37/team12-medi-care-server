@@ -66,14 +66,12 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(new LocalStrategy(User.authenticate()));
 
 
-const postRouter = require("./routes/postRoutes");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 // const doctorDetailsRouter = require('./routes/doctor_details');
 const clinicsRouter = require('./routes/clinics');
 const appointmentsRouter = require('./routes/appointments');
 
-app.use("/api/v1/posts", postRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // app.use('/doctor_details', doctorDetailsRouter);
