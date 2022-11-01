@@ -12,31 +12,7 @@ var createError = require('http-errors');
 var User = require('./models/user');
 //  End of Imports
 
-
-
-// const connectDB = async () => {
-//   try {
-//     // console.log(process.env.MONGO_URI)
-//     await mongoose.connect(process.env.MONGO_URI, {
-//       useNewUrlParser: true,
-//       useFindAndModify: true,
-//       useUnifiedTopology: true,
-//       useCreateIndex: true,
-//     });
-
-//     console.log("MongoDB Connection Success 👍");
-//   } catch (error) {
-//     console.log(error);
-//     console.log("MongoDB Connection Failed 💥");
-//     process.exit(1);
-//   }
-// };
-
-
-
 // ----------------- Driver Code --------------------------------------------
-// connectDB();
-
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useFindAndModify: true,
@@ -68,13 +44,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-// const doctorDetailsRouter = require('./routes/doctor_details');
 const clinicsRouter = require('./routes/clinics');
 const appointmentsRouter = require('./routes/appointments');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/doctor_details', doctorDetailsRouter);
 app.use('/clinics', clinicsRouter);
 app.use('/appointments', appointmentsRouter);
 

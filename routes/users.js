@@ -13,13 +13,12 @@ router.get('/', function(req, res) {
     })
 });
 
-
-// users/doctors
-router.get('/doctors', function(req, res) {
-    collection.find({ 'type': 'Doctor' }, function(err, doctors) {
-        res.json(doctors);
-    })
-});
+// // users/doctors
+// router.get('/doctors', function(req, res) {
+//     collection.find({ 'type': 'Doctor' }, function(err, doctors) {
+//         res.json(doctors);
+//     })
+// });
 
 // users/register/email/:id for new user register checking on email
 router.get('/register/email/:id', function(req, res) {
@@ -34,6 +33,7 @@ router.get('/register/phone/:id', function(req, res) {
         res.json(user);
     })
 });
+
 // users/id
 router.get('/:id', function(req, res) {
     collection.findOne({ _id: req.params.id }, function(err, user) {
@@ -42,38 +42,38 @@ router.get('/:id', function(req, res) {
     })
 });
 
-// update a user
-router.post('/update/:id', function(req, res) {
-    collection.update({ _id: req.params.id }, {
-        $set: {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            phone: req.body.phone,
-            address: req.body.address,
-            city: req.body.city,
-            state: req.body.state,
-            zipcode: req.body.zipcode,
-            status: req.body.status,
-            title: req.body.title,
-            services: req.body.services,
-        }
-    }, function(err, user) {
-        if (err) throw err
-        res.json(user);
-    })
-});
+// // update a user
+// router.post('/update/:id', function(req, res) {
+//     collection.update({ _id: req.params.id }, {
+//         $set: {
+//             firstName: req.body.firstName,
+//             lastName: req.body.lastName,
+//             email: req.body.email,
+//             phone: req.body.phone,
+//             address: req.body.address,
+//             city: req.body.city,
+//             state: req.body.state,
+//             zipcode: req.body.zipcode,
+//             status: req.body.status,
+//             title: req.body.title,
+//             services: req.body.services,
+//         }
+//     }, function(err, user) {
+//         if (err) throw err
+//         res.json(user);
+//     })
+// });
 
-// upload image to user with user id
-router.post('/imageUpload/:id', function(req, res) {
-    collection.update({ _id: req.params.id }, {
-        $set: {
-            image: req.body.image,
-        }
-    }, function(err, user) {
-        if (err) throw err
-        res.json(user);
-    })
-});
+// // upload image to user with user id
+// router.post('/imageUpload/:id', function(req, res) {
+//     collection.update({ _id: req.params.id }, {
+//         $set: {
+//             image: req.body.image,
+//         }
+//     }, function(err, user) {
+//         if (err) throw err
+//         res.json(user);
+//     })
+// });
 
 module.exports = router;
