@@ -1,6 +1,6 @@
 // Import npm packages
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
 
@@ -18,33 +18,41 @@ var createError = require('http-errors');
 var User = require('./models/user');
 //---------------------------------------- END OF IMPORTS---------------------------------------------------
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/medicare', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/medicare', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
 
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose is connected');
+// mongoose.connection.on('connected', () => {
+//     console.log('Mongoose is connected');
+// });
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://admin:Ab7ezkeTf@cluster0.qn4zx.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
 });
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-    cors({
-        origin: 'http://localhost:3006', // <-- location of the react app were connecting to
-        credentials: true,
-    })
-);
+// app.use(
+//     cors({
+//         origin: 'http://localhost:3006', // <-- location of the react app were connecting to
+//         credentials: true,
+//     })
+// );
 
-app.use(session({ secret: 'this-is-a-secret-token' }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({ secret: 'this-is-a-secret-token' }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-// passport config
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-passport.use(new LocalStrategy(User.authenticate()));
+// // passport config
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+// passport.use(new LocalStrategy(User.authenticate()));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
