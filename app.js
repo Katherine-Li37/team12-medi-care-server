@@ -1,8 +1,8 @@
 // Import npm packages
 const express = require('express');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
-const path = require('path');
+// const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000; 
@@ -10,29 +10,21 @@ const PORT = process.env.PORT || 3000;
 var cors = require('cors');
 // var cookieParser = require('cookie-parser');
 // const bodyParser = require('body-parser');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var session = require('express-session');
-var createError = require('http-errors');
+// var passport = require('passport');
+// var LocalStrategy = require('passport-local').Strategy;
+// var session = require('express-session');
+// var createError = require('http-errors');
 
-var User = require('./models/user');
+// var User = require('./models/user');
 //---------------------------------------- END OF IMPORTS---------------------------------------------------
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/medicare', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/medicare', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
-// mongoose.connection.on('connected', () => {
-//     console.log('Mongoose is connected');
-// });
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://admin:Ab7ezkeTf@cluster0.qn4zx.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose is connected');
 });
 
 // Middleware
