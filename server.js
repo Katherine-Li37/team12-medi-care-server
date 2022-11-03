@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
     cors({
-        origin: 'https://katherine-li37.github.io', // <-- location of the react app were connecting to
+        origin: '*',
         credentials: true,
     })
 );
