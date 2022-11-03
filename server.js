@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
     cors({
-        origin: ['https://team12-medi-care.surge.sh/', 'http://localhost:3006', 'http://localhost:3006'],
+        origin: ['https://team12-medi-care.surge.sh/', 'http://localhost:3006', 'http://localhost:3000'],
         credentials: true,
     })
 );
