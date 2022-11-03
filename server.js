@@ -34,7 +34,7 @@ app.use(
 );
 app.use(
     cors({
-        origin: 'http://localhost:3006', // <-- location of the react app were connecting to
+        origin: ['https://team12-medi-care.surge.sh/', 'http://localhost:3006', 'http://localhost:3000'],
         credentials: true,
     })
 );
