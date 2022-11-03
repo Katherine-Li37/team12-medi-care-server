@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 var cors = require('cors');
+const helmet = require('helmet');
 // var cookieParser = require('cookie-parser');
 // const bodyParser = require('body-parser');
 // var passport = require('passport');
@@ -26,6 +27,11 @@ mongoose.connect(process.env.MONGO_URI, {
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  helmet.referrerPolicy({
+    policy: 'no-referrer' // Compliant
+  })
+);
 app.use(
     cors({
         origin: 'http://localhost:3006', // <-- location of the react app were connecting to
