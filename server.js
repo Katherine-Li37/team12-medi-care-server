@@ -52,11 +52,13 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const clinicsRouter = require('./routes/clinics');
 const appointmentsRouter = require('./routes/appointments');
+const feedbacksRouter = require('./routes/feedbacks');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/clinics', clinicsRouter);
 app.use('/appointments', appointmentsRouter);
+app.use('/feedbacks', feedbacksRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
