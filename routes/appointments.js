@@ -32,6 +32,7 @@ router.post('/create', function(req, res) {
         date: req.body.date,
         time: req.body.time,
         procedure: req.body.procedure,
+        ifCheckedIn: false,
         status: req.body.status
     }, function(err, appointment) {
         if (err) throw err
@@ -43,14 +44,19 @@ router.post('/create', function(req, res) {
 router.post('/update/:id', function(req, res) {
     collection.update({ _id: req.params.id }, {
         $set: {
+            clinicID: req.body.clinicID,
+            clinicName: req.body.clinicName,
+            patientID: req.body.patientID,
+            patientName: req.body.patientName,
             date: req.body.date,
             time: req.body.time,
             procedure: req.body.procedure,
             status: req.body.status,
+            ifCheckedIn: req.body.ifCheckedIn
         }
     }, function(err, appointment) {
         if (err) throw err
-        res.json(appointment);
+        res.json({ success: true, appointment: appointment })
     })
 });
 
