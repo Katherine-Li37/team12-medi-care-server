@@ -33,6 +33,7 @@ router.post('/create', function(req, res) {
         time: req.body.time,
         procedure: req.body.procedure,
         ifCheckedIn: false,
+        ifRated: false,
         status: req.body.status
     }, function(err, appointment) {
         if (err) throw err
