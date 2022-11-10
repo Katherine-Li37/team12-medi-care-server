@@ -34,7 +34,7 @@ app.use(
 );
 app.use(
     cors({
-        origin: ['https://team12-medi-care.surge.sh/', 'http://localhost:3006', 'http://localhost:3000'],
+        origin: ['https://medicaredemo-frontend.herokuapp.com/', 'http://localhost:3006', 'http://localhost:3000'],
         credentials: true,
     })
 );

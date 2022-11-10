@@ -53,7 +53,8 @@ router.post('/update/:id', function(req, res) {
             time: req.body.time,
             procedure: req.body.procedure,
             status: req.body.status,
-            ifCheckedIn: req.body.ifCheckedIn
+            ifCheckedIn: req.body.ifCheckedIn,
+            ifRated: req.body.ifRated
         }
     }, function(err, appointment) {
         if (err) throw err
