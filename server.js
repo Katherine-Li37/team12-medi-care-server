@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 var cors = require('cors');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 // var cookieParser = require('cookie-parser');
 // const bodyParser = require('body-parser');
 // var passport = require('passport');
@@ -27,17 +27,18 @@ mongoose.connect(process.env.MONGO_URI, {
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  helmet.referrerPolicy({
-    policy: 'no-referrer' // Compliant
-  })
-);
-app.use(
-    cors({
-        origin: ['https://medicaredemo-frontend.herokuapp.com/', 'http://localhost:3006', 'http://localhost:3000'],
-        credentials: true,
-    })
-);
+// app.use(
+//   helmet.referrerPolicy({
+//     policy: 'no-referrer' // Compliant
+//   })
+// );
+// app.use(
+//     cors({
+//         origin: ['https://medicaredemo-frontend.herokuapp.com/', 'http://localhost:3006', 'http://localhost:3000'],
+//         credentials: true,
+//     })
+// );
+app.options('*', cors())
 app.use(session({ secret: 'this-is-a-secret-token' }));
 // app.use(passport.initialize());
 // app.use(passport.session());
