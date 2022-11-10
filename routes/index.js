@@ -3,7 +3,7 @@ var router = express.Router();
 // var passport = require('passport');
 // var User = require('../models/user');
 var jwt = require('jsonwebtoken');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 var monk = require('monk');
 var db = monk(process.env.MONGO_URI);
