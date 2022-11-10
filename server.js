@@ -32,12 +32,12 @@ app.use(express.urlencoded({ extended: true }));
 //     policy: 'no-referrer' // Compliant
 //   })
 // );
-// app.use(
-//     cors({
-//         origin: ['https://medicaredemo-frontend.herokuapp.com/', 'http://localhost:3006', 'http://localhost:3000'],
-//         credentials: true,
-//     })
-// );
+app.use(
+    cors({
+        origin: ['http://localhost:3006', 'http://localhost:3000'],
+        credentials: true,
+    })
+);
 // app.use((req, res, next) => {
 //   res.header("Access-Control-Allow-Origin", '*');
 //   res.header("Access-Control-Allow-Credentials", true);
@@ -54,14 +54,11 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://medicaredemo-frontend.herokuapp.com")
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin,X-Requested, Content-Type,Accept Authorization,content-type,application/json"
+    'Content-Type, Authorization'
   )
   res.header("Access-Control-Allow-Credentials", true)
   if (req.method === "OPTIONS") {
-    res.header(
-      "Access-Control-Allow-Methods",
-      "POST, PUT, PATCH, GET, DELETE"
-    )
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT" )
     return res.status(200).json({})
   }
   next()
