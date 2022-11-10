@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true }));
 // });
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://medicaredemo-frontend.herokuapp.com,http://localhost:3006,http://localhost:3000")
+  res.header("Access-Control-Allow-Origin", "https://medicaredemo-frontend.herokuapp.com")
   res.header(
     "Access-Control-Allow-Headers",
     "Origin,X-Requested,Content-Type,Accept,Authorization,content-type,application/json"
