@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 //         credentials: true,
 //     })
 // );
-app.options('*', cors())
+app.options('https://medicaredemo-frontend.herokuapp.com/', cors())
 app.use(session({ secret: 'this-is-a-secret-token' }));
 // app.use(passport.initialize());
 // app.use(passport.session());
