@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 // );
 app.use(
     cors({
-        origin: ['http://localhost:3006', 'http://localhost:3000'],
+        origin: [, 'http://localhost:3000'],
         credentials: true,
     })
 );
@@ -51,14 +51,17 @@ app.use(
 // });
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://medicaredemo-frontend.herokuapp.com")
+  res.header("Access-Control-Allow-Origin", "https://medicaredemo-frontend.herokuapp.com,http://localhost:3006,http://localhost:3000")
   res.header(
     "Access-Control-Allow-Headers",
-    'Content-Type, Authorization'
+    "Origin,X-Requested,Content-Type,Accept,Authorization,content-type,application/json"
   )
   res.header("Access-Control-Allow-Credentials", true)
   if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT" )
+    res.header(
+      "Access-Control-Allow-Methods",
+      "POST,PUT,PATCH,GET,DELETE"
+    )
     return res.status(200).json({})
   }
   next()
