@@ -32,13 +32,13 @@ app.use(express.urlencoded({ extended: true }));
 //     policy: 'no-referrer' // Compliant
 //   })
 // );
-// app.use(
-//     cors({
-//         origin: ['https://medicaredemo-frontend.herokuapp.com/', 'http://localhost:3006', 'http://localhost:3000'],
-//         credentials: true,
-//     })
-// );
-app.options('https://medicaredemo-frontend.herokuapp.com/', cors())
+app.use(
+    cors({
+        origin: ['https://medicaredemo-frontend.herokuapp.com/', 'http://localhost:3006', 'http://localhost:3000'],
+        credentials: true,
+    })
+);
+// app.options('https://medicaredemo-frontend.herokuapp.com/', cors())
 app.use(session({ secret: 'this-is-a-secret-token' }));
 // app.use(passport.initialize());
 // app.use(passport.session());
