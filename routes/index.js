@@ -44,7 +44,7 @@ router.post('/register', function(req, res) {
 //     });
 // });
 router.post('/login', function(req, res) {
-    res.set('Access-Control-Allow-Origin', '*')
+    res.set('Access-Control-Allow-Origin', 'https://medicaredemo-frontend.herokuapp.com/')
     collection.findOne({ 'username': req.body.username }, function(err, user) {
         if (user.password === req.body.password){
             const token = jwt.sign({
