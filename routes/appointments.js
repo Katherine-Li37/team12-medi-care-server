@@ -22,6 +22,13 @@ router.get('/patient/:id', function(req, res) {
     })
 });
 
+// appointments/appointment/id: get appointment by patient id
+router.get('/appointment/:id', function(req, res) {
+    collection.find({ '_id': req.params.id }, function(err, appointments) {
+        res.json(appointments);
+    })
+});
+
 // add new appointment: appointments/create
 router.post('/create', function(req, res) {
     collection.insert({
